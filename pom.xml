@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>at.aberger.demo</groupId>
+  <artifactId>jakarta-app</artifactId>
+  <version>0.5.0</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <global.groupId>at.aberger.demo</global.groupId>
+    <global.version>0.5.0</global.version>
+  </properties>
+
+  <dependencyManagement>
+  </dependencyManagement>
+  <dependencies>
+  </dependencies>
+  <modules>
+    <module>appsrv</module>
+    <module>docker</module>
+    <module>www</module>
+    <module>distribution</module>
+  </modules>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>3.3.0</version>
+        </plugin>
+        <plugin>
+            <groupId>com.github.eirslett</groupId>
+            <artifactId>frontend-maven-plugin</artifactId>
+            <version>1.11.0</version>
+        </plugin>
+      </plugins>
+      </pluginManagement>
+  </build>
+</project>
