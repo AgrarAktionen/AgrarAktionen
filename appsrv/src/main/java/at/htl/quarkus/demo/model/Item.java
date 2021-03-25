@@ -11,4 +11,6 @@ public class Item {
     @GeneratedValue
     private int id;
 
+    // To do: add Attributes
+
 }
