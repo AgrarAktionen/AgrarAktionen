@@ -12,6 +12,8 @@ import java.util.List;
 @Dependent
 public class BillDao {
 
+    //Sponsi ändert wos
+
     @Inject
     EntityManager em;
 
