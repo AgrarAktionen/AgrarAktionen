@@ -11,6 +11,9 @@ import java.util.List;
 @Named
 @Dependent
 public class BillDao {
+
+    //Sponsi probiat dasa wos ändert
+
     @Inject
     EntityManager em;
 
