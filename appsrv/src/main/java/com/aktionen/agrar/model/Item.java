@@ -12,5 +12,6 @@ public class Item {
     private int id;
 
     // To do: add Attributes
+    // Daun do numoi
 
 }
