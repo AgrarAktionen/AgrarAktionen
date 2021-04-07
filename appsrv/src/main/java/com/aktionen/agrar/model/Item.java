@@ -13,5 +13,6 @@ public class Item {
 
     // To do: add Attributes
     // Daun do numoi
+    // Hallo da simon hod gsogt i dua wos
 
 }
