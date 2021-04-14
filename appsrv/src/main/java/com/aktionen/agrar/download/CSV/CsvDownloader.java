@@ -1,33 +1,42 @@
 package com.aktionen.agrar.download.CSV;
 
+import com.aktionen.agrar.dao.ItemDao;
+import com.aktionen.agrar.model.Item;
 import com.opencsv.bean.CsvToBeanBuilder;
 import io.quarkus.runtime.Quarkus;
 import org.apache.commons.io.IOUtils;
 
+import javax.inject.Inject;
 import java.io.*;
 import java.net.URL;
 import java.util.List;
 
 public class CsvDownloader {
 
+    ItemDao itemDao = new ItemDao();
+
     public static void main(String[] args) throws IOException {
-        writeCSVUrl();
+        //writeCSVUrl();
+
         Quarkus.run(args);
-        //List<Items> listItems = cSVTOPOJO();
-        //beans.forEach(System.out::println);
-        //System.out.println(ListItems.get(0).getArtikelbezeichnung());
+        CsvDownloader csvDownloader = new CsvDownloader();
+        //csvDownloader.cSVTOPOJO();
     }
 
-    public List<Items> cSVTOPOJO() throws FileNotFoundException {
+    public List<Item> cSVTOPOJO() throws FileNotFoundException {
 
         String fileName = "src/main/java/com/aktionen/agrar/download/CSV/file.csv";
-        List<Items> beans = new CsvToBeanBuilder(
+        List<Item> beans = new CsvToBeanBuilder(
                 new FileReader(fileName))
                 .withSeparator(';')          // custom CSV parser
-                .withType(Items.class)
+                .withType(Item.class)
                 .withSkipLines(1)
                 .build()
                 .parse();
+
+        //beans.forEach(System.out::println);
+        //itemDao.saveAll(beans);
+
         return beans;
     }
 

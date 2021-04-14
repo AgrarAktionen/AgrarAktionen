@@ -1,11 +1,3 @@
-GET http://localhost:8080/api/person
-Accept: application/json
-
-###
-GET http://localhost:8080/api/person/3
-Accept: application/json
-
-###
-GET http://localhost:8080/api/school/2
+PUT http://localhost:8080/api/view/viewInsert
 Accept: application/json
 
