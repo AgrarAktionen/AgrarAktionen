@@ -17,23 +17,6 @@ public class ItemDao {
     EntityManager em;
 
         public void insertAll(List<Item> items){
-
-      /*      EntityManagerFactory emf = Persistence.createEntityManagerFactory("TDEMSPU");
-            em = emf.createEntityManager();
-
-
-            em.getTransaction().begin();
-
-            List<Item> itemList = items;
-            for (Iterator<Item> it = itemList.iterator(); it.hasNext();) {
-                Item enquiry = it.next();
-
-                em.persist(enquiry);
-                em.flush();
-                em.clear();
-            }
-*/
-
             for(Item item:items){
                 em.merge(item);
                 em.flush();
@@ -41,7 +24,7 @@ public class ItemDao {
         }
 
 
-    public List<Item> all() {
+    public List<Item> getAll() {
         return em.createQuery("select i from Item i ", Item.class).getResultList();
     }
 
@@ -49,14 +32,14 @@ public class ItemDao {
         return em.find(Item.class, id);
     }
 
-    public Item save(@NotNull Item item) {
+    public Item add(@NotNull Item item) {
         return em.merge(item);
     }
     public Item get(int id) {
         return em.find(Item.class, id);
     }
 
-    public void remove(Item item) {
+    public void delete(Item item) {
         em.remove(item);
     }
 

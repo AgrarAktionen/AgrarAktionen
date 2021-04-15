@@ -1,7 +1,5 @@
-package com.aktionen.agrar.download.View;
+package com.aktionen.agrar.rest;
 
-import at.htl.quarkus.demo.dao.SchoolDao;
-import at.htl.quarkus.demo.model.School;
 import com.aktionen.agrar.dao.ItemDao;
 import com.aktionen.agrar.model.Item;
 
@@ -26,7 +24,7 @@ public class ItemResource {
     @GET
     @Path("/")
     public List<Item> all() {
-        return itemDao.all();
+        return itemDao.getAll();
     }
     @Path("/{id:[0-9]+}")
     @GET
