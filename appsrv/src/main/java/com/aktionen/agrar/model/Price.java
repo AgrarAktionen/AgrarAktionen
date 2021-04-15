@@ -32,6 +32,7 @@ public class Price {
     public String toString() {
         return "Price{" +
                 "id='" + priceId + '\'' +
+                ", Bruttopreis='" + bruttopreis + '\'' +
                 ", Startpreis='" + stattpreis + '\'' +
                 ", timestamp='" + timestamp + '\'' +
                 ", validflag='" + validFlag + '\'' +

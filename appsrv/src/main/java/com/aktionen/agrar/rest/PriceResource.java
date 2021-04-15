@@ -2,7 +2,9 @@ package com.aktionen.agrar.rest;
 
 
 import com.aktionen.agrar.dao.PriceDao;
+import com.aktionen.agrar.download.CsvDownloader;
 import com.aktionen.agrar.model.APILink;
+import com.aktionen.agrar.model.Item;
 import com.aktionen.agrar.model.Price;
 
 import javax.inject.Inject;
@@ -17,11 +19,16 @@ import java.util.List;
 @Path("price")
 public class PriceResource {
 
+    CsvDownloader csvDownloader = new CsvDownloader();
+
     @Inject
     PriceDao priceDao;
 
     @GET
-    public List<Price> all() {return priceDao.getAll();}
+    public List<Price> all() {
+        List<Price> price = priceDao.getAll();
+        return priceDao.getAll();
+    }
 
     @GET
     @Path("/{id}")
