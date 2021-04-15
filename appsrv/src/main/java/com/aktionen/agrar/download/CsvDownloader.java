@@ -24,7 +24,7 @@ public class CsvDownloader {
 
     public List<Item> cSVTOPOJO() throws FileNotFoundException {
 
-        String fileName = "src/main/java/com/aktionen/agrar/download/CSV/file.csv";
+        String fileName = "src/main/java/com/aktionen/agrar/download/file.csv";
         List<Item> beans = new CsvToBeanBuilder(
                 new FileReader(fileName))
                 .withSeparator(';')          // custom CSV parser
