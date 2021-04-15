@@ -2,14 +2,14 @@ package com.aktionen.agrar.rest;
 
 
 import com.aktionen.agrar.dao.PriceDao;
+import com.aktionen.agrar.model.APILink;
 import com.aktionen.agrar.model.Price;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Transactional
@@ -23,7 +23,24 @@ public class PriceResource {
     @GET
     public List<Price> all() {return priceDao.getAll();}
 
+    @GET
+    @Path("/{id}")
+    public Price getPrice(@PathParam("id") int id) {
+        return priceDao.get(id);
+    }
 
+    @PUT
+    public Response addPrice(Price price) {
+        priceDao.add(price);
+        return Response.ok(price).status(Response.Status.CREATED).build();
+    }
 
+    @DELETE
+    @Path("/{id}")
+    public Response delete(@PathParam("id") int id) {
+        var price = priceDao.get(id);
+        priceDao.delete(price);
+        return Response.status(Response.Status.NO_CONTENT).build();
+    }
 
 }

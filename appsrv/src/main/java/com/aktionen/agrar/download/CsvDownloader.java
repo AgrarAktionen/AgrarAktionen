@@ -42,7 +42,7 @@ public class CsvDownloader {
 
     private static void writeCSVUrl() throws IOException {
         InputStream inputStream = new URL("https://www.faie.at/backend/export/index/agraraktionen.csv?feedID=68&hash=1bfdc5718d84ebfd191e9ee6617a7764").openStream();
-        FileOutputStream fileOS = new FileOutputStream("src/main/java/com/aktionen/agrar/download/CSV/file.csv");
+        FileOutputStream fileOS = new FileOutputStream("src/main/java/com/aktionen/agrar/download/file.csv");
         int i = IOUtils.copy(inputStream, fileOS);
 
     }
