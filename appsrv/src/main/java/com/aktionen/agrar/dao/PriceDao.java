@@ -1,6 +1,5 @@
 package com.aktionen.agrar.dao;
 
-import com.aktionen.agrar.model.Item;
 import com.aktionen.agrar.model.Price;
 
 import javax.enterprise.context.Dependent;
@@ -23,7 +22,9 @@ public class PriceDao {
         }
     }
 
-    public List<Price> getAll() {return em.createQuery("select p from Price p ", Price.class).getResultList();}
+    public List<Price> getAll() {
+        return em.createQuery("select p from Price p ", Price.class).getResultList();
+    }
 
     public Price add(@NotNull Price price) {
         return em.merge(price);

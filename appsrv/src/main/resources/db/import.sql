@@ -21,3 +21,9 @@ insert into db.Shop(shopId, name, contactPerson) values (3, 'Test2', 'Faie-Manag
 insert into db.APILink(apiId, url, description, user, password, shopId) values (1, 'https://www.faie.at/backend/export/index/agraraktionen.csv?feedID=68&hash=1bfdc5718d84ebfd191e9ee6617a7764', '', '', '', 1);
 insert into db.APILink(apiId, url, description, user, password, shopId) values (2, '', '', 'wdawd', 'awd', 2);
 insert into db.APILink(apiId, url, description, user, password, shopId) values (3, '', '', 'awd', 'awd', 2);
+
+insert into db.Price(priceId, timestamp, validFlag) values (1, 'Stamp1', true);
+/*
+insert into db.Price(priceId, timestamp, validFlag) values (2, 'Stamp2', true);
+insert into db.Price(priceId, timestamp, validFlag) values (3, 'Stamp3', true);
+ */
