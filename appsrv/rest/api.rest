@@ -1,3 +1,3 @@
-PUT http://localhost:8080/api/view/viewInsert
-Accept: application/json
 
+PUT http://localhost:8080/api/price/priceInsert
+Accept: application/json

@@ -16,7 +16,7 @@ public class PriceDao {
     EntityManager em;
 
     public void insertAll(List<Price> prices){
-        for(Price price:prices){
+        for(Price price:prices) {
             em.merge(price);
             em.flush();
         }

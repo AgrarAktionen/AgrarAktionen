@@ -15,7 +15,7 @@ public class Item {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int itemId;
 
     @Column(length = 1000)
     @CsvBindByPosition(position = 0)
@@ -49,6 +49,7 @@ public class Item {
     @CsvBindByPosition(position = 7)
     private String verfuegbarkeit;
 
+    /*
     @Column(length = 1000)
     @CsvBindByPosition(position = 8)
     private String bruttopreis;
@@ -56,7 +57,7 @@ public class Item {
     @Column(length = 1000)
     @CsvBindByPosition(position = 9)
     private String stattpreis;
-
+    */
 /*    @Column(length = 1000)
     @CsvBindByPosition(position = 10)
     private String ean;
@@ -76,8 +77,6 @@ public class Item {
                 ", bildLink='" + bildLink + '\'' +
                 ", deeplink='" + deeplink + '\'' +
                 ", verfuegbarkeit='" + verfuegbarkeit + '\'' +
-                ", bruttopreis='" + bruttopreis + '\'' +
-                ", stattpreis='" + stattpreis + '\'' +
                 ", versandkosten='" + versandkosten + '\'' +
                 '}';
     }

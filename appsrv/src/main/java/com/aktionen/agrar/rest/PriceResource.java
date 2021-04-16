@@ -3,8 +3,6 @@ package com.aktionen.agrar.rest;
 
 import com.aktionen.agrar.dao.PriceDao;
 import com.aktionen.agrar.download.CsvDownloader;
-import com.aktionen.agrar.model.APILink;
-import com.aktionen.agrar.model.Item;
 import com.aktionen.agrar.model.Price;
 
 import javax.inject.Inject;
@@ -12,6 +10,7 @@ import javax.transaction.Transactional;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 @Transactional
@@ -50,4 +49,10 @@ public class PriceResource {
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 
+    @PUT
+    @Path("priceInsert")
+    public void insertData() throws FileNotFoundException {
+        List<Price> price = csvDownloader.createPriceList();
+        priceDao.insertAll(price);
+    }
 }

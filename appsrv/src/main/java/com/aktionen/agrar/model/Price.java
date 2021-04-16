@@ -11,6 +11,7 @@ public class Price {
 
     @Id
     @GeneratedValue
+    private String timestamp;
     private int priceId;
 
     @Column(length = 1000)
@@ -21,13 +22,12 @@ public class Price {
     @CsvBindByPosition(position = 9)
     private String stattpreis;
 
-    private String timestamp;
     private boolean validFlag;
-
+/*
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "itemId")
     private Item item;
-
+*/
     @Override
     public String toString() {
         return "Price{" +
@@ -36,7 +36,6 @@ public class Price {
                 ", Startpreis='" + stattpreis + '\'' +
                 ", timestamp='" + timestamp + '\'' +
                 ", validflag='" + validFlag + '\'' +
-                ", Item='" + item + '\'' +
                 '}';
     }
 }

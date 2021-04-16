@@ -2,6 +2,7 @@ package com.aktionen.agrar.download;
 
 import com.aktionen.agrar.dao.ItemDao;
 import com.aktionen.agrar.model.Item;
+import com.aktionen.agrar.model.Price;
 import com.opencsv.bean.CsvToBeanBuilder;
 import io.quarkus.runtime.Quarkus;
 import org.apache.commons.io.IOUtils;
@@ -13,6 +14,7 @@ import java.util.List;
 public class CsvDownloader {
 
     ItemDao itemDao = new ItemDao();
+    String fileName = "src/main/java/com/aktionen/agrar/download/file.csv";
 
     public static void main(String[] args) throws IOException {
         //writeCSVUrl();
@@ -22,10 +24,8 @@ public class CsvDownloader {
         //csvDownloader.cSVTOPOJO();
     }
 
-    public List<Item> cSVTOPOJO() throws FileNotFoundException {
-
-        String fileName = "src/main/java/com/aktionen/agrar/download/file.csv";
-        List<Item> beans = new CsvToBeanBuilder(
+    public List<Item> createItemList() throws FileNotFoundException {
+        List<Item> itemList = new CsvToBeanBuilder(
                 new FileReader(fileName))
                 .withSeparator(';')          // custom CSV parser
                 .withType(Item.class)
@@ -33,10 +33,21 @@ public class CsvDownloader {
                 .build()
                 .parse();
 
-        //beans.forEach(System.out::println);
-        //itemDao.saveAll(beans);
+        //itemList.forEach(System.out::println);
+        //itemDao.saveAll(itemList);
+        return itemList;
+    }
 
-        return beans;
+    public List<Price> createPriceList() throws FileNotFoundException {
+        List<Price> priceList = new CsvToBeanBuilder(
+                new FileReader(fileName))
+                .withSeparator(';')          // custom CSV parser
+                .withType(Price.class)
+                .withSkipLines(1)
+                .build()
+                .parse();
+
+        return priceList;
     }
 
 

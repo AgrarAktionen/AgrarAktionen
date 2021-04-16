@@ -29,7 +29,7 @@ public class ViewResource {
     @PUT
     @Path("viewInsert")
     public void insertData() throws FileNotFoundException {
-        List<Item> items = csvDownloader.cSVTOPOJO();
+        List<Item> items = csvDownloader.createItemList();
         itemDao.insertAll(items);
     }
 
