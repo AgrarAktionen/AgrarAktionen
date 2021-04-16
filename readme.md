@@ -42,6 +42,6 @@ As you see only Person has been tested. Contributions are welcome.
 
 Example
 ===
-http://hulk.l.aberger.at/caberger/api/person
+http://localhost:8080/api/view
 
 Coming soon: Working JavaScript Website with "Aktions" Data
