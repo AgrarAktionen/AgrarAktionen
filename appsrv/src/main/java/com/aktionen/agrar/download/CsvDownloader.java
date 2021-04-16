@@ -24,7 +24,7 @@ public class CsvDownloader {
 
     public List<Item> cSVTOPOJO() throws FileNotFoundException {
 
-        String fileName = "src/main/java/com/aktionen/agrar/download/CSV/file.csv";
+        String fileName = "src/main/java/com/aktionen/agrar/download/file.csv";
         List<Item> beans = new CsvToBeanBuilder(
                 new FileReader(fileName))
                 .withSeparator(';')          // custom CSV parser
@@ -32,6 +32,7 @@ public class CsvDownloader {
                 .withSkipLines(1)
                 .build()
                 .parse();
+        System.out.println(beans.get(0));
 
         //beans.forEach(System.out::println);
         //itemDao.saveAll(beans);
@@ -42,7 +43,7 @@ public class CsvDownloader {
 
     private static void writeCSVUrl() throws IOException {
         InputStream inputStream = new URL("https://www.faie.at/backend/export/index/agraraktionen.csv?feedID=68&hash=1bfdc5718d84ebfd191e9ee6617a7764").openStream();
-        FileOutputStream fileOS = new FileOutputStream("src/main/java/com/aktionen/agrar/download/CSV/file.csv");
+        FileOutputStream fileOS = new FileOutputStream("src/main/java/com/aktionen/agrar/download/file.csv");
         int i = IOUtils.copy(inputStream, fileOS);
 
     }

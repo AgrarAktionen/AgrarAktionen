@@ -10,13 +10,11 @@ public class APILink {
 
     @Id
     @GeneratedValue
-    private int apiId;
+    private int apiLinkId;
     private String url;
     private String description;
     private String user;
     private String password;
-
-    //TODO: implement ForeignKey
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "shopId")
