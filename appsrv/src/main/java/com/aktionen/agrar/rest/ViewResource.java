@@ -1,6 +1,7 @@
 package com.aktionen.agrar.rest;
 
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import javax.ws.rs.*;
 
@@ -30,7 +31,8 @@ public class ViewResource {
     @Path("viewInsert")
     public void insertData() throws FileNotFoundException {
         List<Item> items = csvDownloader.cSVTOPOJO();
-        itemDao.insertAll(items);
+        itemDao.insertAll(items, "Faie");
+
     }
 
 

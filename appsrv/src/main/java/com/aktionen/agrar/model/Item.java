@@ -1,12 +1,10 @@
 package com.aktionen.agrar.model;
 
 import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvCustomBindByName;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -64,6 +62,10 @@ public class Item {
     @Column(length = 1000)
     @CsvBindByPosition(position = 10)
     private String versandkosten;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "apiLinkId")
+    private APILink apiLink;
 
     @Override
     public String toString() {

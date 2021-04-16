@@ -12,7 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("school")
+@Path("item")
 @Produces(MediaType.APPLICATION_JSON)
 @Transactional
 
@@ -26,6 +26,7 @@ public class ItemResource {
     public List<Item> all() {
         return itemDao.getAll();
     }
+
     @Path("/{id:[0-9]+}")
     @GET
     public Item getItem(@PathParam("id") int id) {
