@@ -1,13 +1,18 @@
-# JPA/CDI Quarkus Application Example
+# AgrarAktionen
 
-This example shows how to use Context and Dependency Injection in a [quarkus](https://quarkus.io) application server and also in JavaFX-Application.
+This code shows the content of an REST-API from a firm and act with Dependency Injections in a Application Server called [quarkus](https://quarkus.io) and shows the fetched data from a Database in a JavaFX-Application.
 
 Database
 ===
 
-To start the database open a terminal in the docker subfolder and run the following: 
+To start the database in the docker subfolder: 
 ```bash
-docker-compose up --build
+run the CsVDownloader.java
+```
+
+To insert Items Data manually: 
+```bash
+run api.rest application in the rest Folder
 ```
 
 To reset the project and clean the database run
@@ -24,10 +29,6 @@ www
 ===
 see the www Subfolder for the javascript client
 
-JavaFX
-===
-See the appliation subfolder. This application is out of date, contributions welcome!
-
 Cucumber Feature Tests and Code Coverage
 ===
 see appsrc/src/test/resources for a feature test. To see the coverage report run the following:
@@ -43,5 +44,4 @@ Example
 ===
 http://hulk.l.aberger.at/caberger/api/person
 
-Coming soon: Composite Keys
-===
+Coming soon: Working JavaScript Website with "Aktions" Data
