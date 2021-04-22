@@ -1,6 +1,6 @@
 package com.aktionen.agrar.dao;
 
-import at.htl.quarkus.demo.model.School;
+import com.aktionen.agrar.model.APILink;
 import com.aktionen.agrar.model.Item;
 
 import javax.enterprise.context.Dependent;
@@ -16,8 +16,13 @@ public class ItemDao {
     @Inject
     EntityManager em;
 
-        public void insertAll(List<Item> items){
+        public void insertAll(List<Item> items, String name){
+            APILink apiLink = em.createQuery("select a from APILink a where a.description = :desc", APILink.class)
+                    .setParameter("desc", name)
+                    .getSingleResult();
             for(Item item:items){
+                item.setApiLink(apiLink);
+                //em.persist(item);
                 em.merge(item);
                 em.flush();
             }
@@ -28,13 +33,11 @@ public class ItemDao {
         return em.createQuery("select i from Item i ", Item.class).getResultList();
     }
 
-    public Item findById(int id) {
-        return em.find(Item.class, id);
-    }
 
     public Item add(@NotNull Item item) {
         return em.merge(item);
     }
+
     public Item get(int id) {
         return em.find(Item.class, id);
     }

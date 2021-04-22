@@ -1,6 +1,5 @@
 package com.aktionen.agrar.dao;
 
-import at.htl.quarkus.demo.model.Bill;
 import com.aktionen.agrar.model.Shop;
 
 import javax.enterprise.context.Dependent;

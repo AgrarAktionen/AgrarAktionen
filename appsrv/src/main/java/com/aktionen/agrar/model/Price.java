@@ -9,10 +9,8 @@ import javax.persistence.*;
 @Entity
 public class Price {
 
-    @Id
-    @GeneratedValue
-    private String timestamp;
-    private int priceId;
+    @EmbeddedId
+    private PricePk pricePk;
 
     @Column(length = 1000)
     @CsvBindByPosition(position = 8)
@@ -23,19 +21,11 @@ public class Price {
     private String stattpreis;
 
     private boolean validFlag;
+
+
 /*
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "itemId")
     private Item item;
 */
-    @Override
-    public String toString() {
-        return "Price{" +
-                "id='" + priceId + '\'' +
-                ", Bruttopreis='" + bruttopreis + '\'' +
-                ", Startpreis='" + stattpreis + '\'' +
-                ", timestamp='" + timestamp + '\'' +
-                ", validflag='" + validFlag + '\'' +
-                '}';
-    }
 }

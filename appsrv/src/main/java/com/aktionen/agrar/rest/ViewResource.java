@@ -10,29 +10,17 @@ import com.aktionen.agrar.download.CsvDownloader;
 import com.aktionen.agrar.model.Item;
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;
-
-import java.io.FileNotFoundException;
 import java.util.List;
 
 @Transactional
 @Path("view")
 public class ViewResource {
 
-    CsvDownloader csvDownloader = new CsvDownloader();
-
     @Inject
     Template view;
 
     @Inject
     ItemDao itemDao;
-
-    @PUT
-    @Path("viewInsert")
-    public void insertData() throws FileNotFoundException {
-        List<Item> items = csvDownloader.createItemList();
-        itemDao.insertAll(items);
-    }
-
 
     @GET
     public TemplateInstance templateInstance() {

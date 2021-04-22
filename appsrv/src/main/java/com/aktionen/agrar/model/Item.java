@@ -3,10 +3,8 @@ package com.aktionen.agrar.model;
 import com.opencsv.bean.CsvBindByPosition;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -49,36 +47,20 @@ public class Item {
     @CsvBindByPosition(position = 7)
     private String verfuegbarkeit;
 
-    /*
     @Column(length = 1000)
-    @CsvBindByPosition(position = 8)
-    private String bruttopreis;
-
-    @Column(length = 1000)
-    @CsvBindByPosition(position = 9)
-    private String stattpreis;
-    */
-/*    @Column(length = 1000)
     @CsvBindByPosition(position = 10)
     private String ean;
-*/
+
     @Column(length = 1000)
-    @CsvBindByPosition(position = 10)
+    @CsvBindByPosition(position = 11)
     private String versandkosten;
 
-    @Override
-    public String toString() {
-        return "Items{" +
-                "artikelbezeichnung='" + artikelbezeichnung + '\'' +
-                ", hersteller='" + hersteller + '\'' +
-                ", artikelnummer='" + artikelnummer + '\'' +
-                ", kategoriepfad='" + kategoriepfad + '\'' +
-                ", beschreibungsfeld='" + beschreibungsfeld + '\'' +
-                ", bildLink='" + bildLink + '\'' +
-                ", deeplink='" + deeplink + '\'' +
-                ", verfuegbarkeit='" + verfuegbarkeit + '\'' +
-                ", versandkosten='" + versandkosten + '\'' +
-                '}';
-    }
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "itemId", referencedColumnName = "itemId")
+    private List<Price> prices;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "apiId")
+    private APILink apiLink;
 
 }

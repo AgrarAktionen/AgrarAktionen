@@ -1,12 +1,18 @@
 package com.aktionen.agrar.dao;
 
+import com.aktionen.agrar.model.APILink;
+import com.aktionen.agrar.model.Item;
 import com.aktionen.agrar.model.Price;
+import com.aktionen.agrar.model.PricePk;
+import com.sun.xml.bind.v2.TODO;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
+import javax.persistence.GeneratedValue;
 import javax.validation.constraints.NotNull;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Named
@@ -15,10 +21,26 @@ public class PriceDao {
     @Inject
     EntityManager em;
 
+    @Inject
+    ItemDao itemDao;
+
     public void insertAll(List<Price> prices){
-        for(Price price:prices) {
+    // TODO create a currentId which is an actual id in the database: hibernate_sequence -> import SQL
+        //Item firstItem = itemDao.get(0);
+        //int currentId = firstItem.getItemId();
+        int currentId = 1000;
+        for(Price price:prices){
+            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            Item item = em.createQuery("select p from Item p where p.itemId = :ids", Item.class)
+                    .setParameter("ids", currentId)
+                    .getSingleResult();
+
+            price.setPricePk(new PricePk(item.getItemId(), timestamp));
+            //em.persist(item);
             em.merge(price);
             em.flush();
+            currentId++;
+
         }
     }
 

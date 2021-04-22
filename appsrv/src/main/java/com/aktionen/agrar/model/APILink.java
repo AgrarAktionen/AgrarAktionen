@@ -16,7 +16,6 @@ public class APILink {
     private String user;
     private String password;
 
-    //TODO: implement ForeignKey
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "shopId")

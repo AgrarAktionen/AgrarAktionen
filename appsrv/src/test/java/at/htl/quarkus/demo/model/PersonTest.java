@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import static org.junit.Assert.assertEquals;
 
 public class PersonTest {
+    /*
     Person person;
     String fullName;
 
@@ -30,4 +31,6 @@ public class PersonTest {
     public void i_should_be_told(String string) {
         assertEquals(string, this.fullName);
     }
+
+ */
 }

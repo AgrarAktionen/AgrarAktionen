@@ -1,6 +1,7 @@
 package com.aktionen.agrar.rest;
 
 
+
 import com.aktionen.agrar.dao.PriceDao;
 import com.aktionen.agrar.download.CsvDownloader;
 import com.aktionen.agrar.model.Price;
@@ -18,17 +19,24 @@ import java.util.List;
 @Path("price")
 public class PriceResource {
 
-    CsvDownloader csvDownloader = new CsvDownloader();
+    @Inject
+    CsvDownloader csvDownloader;
 
     @Inject
     PriceDao priceDao;
+
+    @PUT
+    @Path("priceInsert")
+    public void insertDatas() throws FileNotFoundException {
+        List<Price> prices = csvDownloader.createPriceList();
+        priceDao.insertAll(prices);
+    }
 
     @GET
     public List<Price> all() {
         List<Price> price = priceDao.getAll();
         return priceDao.getAll();
     }
-
     @GET
     @Path("/{id}")
     public Price getPrice(@PathParam("id") int id) {
@@ -49,10 +57,4 @@ public class PriceResource {
         return Response.status(Response.Status.NO_CONTENT).build();
     }
 
-    @PUT
-    @Path("priceInsert")
-    public void insertData() throws FileNotFoundException {
-        List<Price> price = csvDownloader.createPriceList();
-        priceDao.insertAll(price);
-    }
 }

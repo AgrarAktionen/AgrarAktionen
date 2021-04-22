@@ -5,23 +5,21 @@ import com.aktionen.agrar.model.Item;
 import com.aktionen.agrar.model.Price;
 import com.opencsv.bean.CsvToBeanBuilder;
 import io.quarkus.runtime.Quarkus;
+import io.quarkus.runtime.annotations.QuarkusMain;
 import org.apache.commons.io.IOUtils;
 
 import java.io.*;
 import java.net.URL;
 import java.util.List;
-
+@QuarkusMain
 public class CsvDownloader {
 
     ItemDao itemDao = new ItemDao();
     String fileName = "src/main/java/com/aktionen/agrar/download/file.csv";
 
     public static void main(String[] args) throws IOException {
-        //writeCSVUrl();
-
+        //fetchCSV(); //uncomment to get new API CSV DATA
         Quarkus.run(args);
-        CsvDownloader csvDownloader = new CsvDownloader();
-        //csvDownloader.cSVTOPOJO();
     }
 
     public List<Item> createItemList() throws FileNotFoundException {
@@ -33,8 +31,6 @@ public class CsvDownloader {
                 .build()
                 .parse();
 
-        //itemList.forEach(System.out::println);
-        //itemDao.saveAll(itemList);
         return itemList;
     }
 
@@ -51,7 +47,7 @@ public class CsvDownloader {
     }
 
 
-    private static void writeCSVUrl() throws IOException {
+    private static void fetchCSV() throws IOException {
         InputStream inputStream = new URL("https://www.faie.at/backend/export/index/agraraktionen.csv?feedID=68&hash=1bfdc5718d84ebfd191e9ee6617a7764").openStream();
         FileOutputStream fileOS = new FileOutputStream("src/main/java/com/aktionen/agrar/download/file.csv");
         int i = IOUtils.copy(inputStream, fileOS);
