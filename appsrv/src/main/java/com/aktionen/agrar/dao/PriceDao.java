@@ -1,17 +1,14 @@
 package com.aktionen.agrar.dao;
 
-import com.aktionen.agrar.model.APILink;
 import com.aktionen.agrar.model.Item;
 import com.aktionen.agrar.model.Price;
 import com.aktionen.agrar.model.PricePk;
-import com.sun.xml.bind.v2.TODO;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
-import javax.persistence.GeneratedValue;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -48,7 +45,7 @@ public class PriceDao {
         return em.createQuery("select p from Price p ", Price.class).getResultList();
     }
 
-    public Price add(@NotNull Price price) {
+    public Price add( Price price) {
         return em.merge(price);
     }
 
