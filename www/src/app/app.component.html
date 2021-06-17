@@ -1,0 +1,16 @@
+<h1>Shop Items</h1>
+<hr> 
+
+<table id="items">
+  <tr>
+    <th *ngFor="let col of columns">
+      {{col}}
+    </th>
+  </tr> 
+  <tr *ngFor="let item of items">
+    <td *ngFor="let col of index">
+      {{item[col]}}
+    </td>
+  </tr>
+
+</table>
