@@ -4,7 +4,7 @@ import { ItemService } from '../item-service/item.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-item-table',
+  selector: 'item-table',
   templateUrl: './item-table.component.html',
   styleUrls: ['./item-table.component.scss']
 })
