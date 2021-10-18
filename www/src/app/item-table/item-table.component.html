@@ -1,0 +1,30 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="start">
+            <h1>Agrar Aktionen</h1>
+            <br><br>
+            <input type="text" placeholder="Suchbegriff" id="searchFeld"/>
+        </div>
+
+        <table id="items" >
+            <thead>
+                <tr>
+                    <th>Bild</th>
+                    <th>Artikelbezeichnung</th>
+                    <th>Beschreibungsfeld</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items" (click)="clicked(item)">
+                    <td><img src={{item.bildLink}}></td>
+                    <td>{{item.artikelbezeichnung}}</td>
+                    <td>{{item.beschreibungsfeld}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    
+</html>
