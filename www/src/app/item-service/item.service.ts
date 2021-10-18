@@ -15,7 +15,7 @@ export class ItemService {
     return this.client.get<Item[]>(URL); 
   }
   getID(id: Number) {
-    var URLID = "http://localhost:8080/item/" + id.toString();
+    var URLID = "http://localhost:8080/api/item/" + id.toString();
     return this.client.get<Item>(URLID);
   }
 }
