@@ -18,7 +18,7 @@ public class CsvDownloader {
     String fileName = "src/main/java/com/aktionen/agrar/download/file.csv";
 
     public static void main(String[] args) throws IOException {
-        //fetchCSV(); //uncomment to get new API CSV DATA
+        fetchCSV(); //uncomment to get new API CSV DATA
         Quarkus.run(args);
     }
 

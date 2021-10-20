@@ -6,7 +6,7 @@
         <div id="start">
             <br><br>
             <br><br>
-            <h1>Agrar Aktionen</h1>
+            <h1>{{item.artikelbezeichnung}}</h1>
             <br><br>
         </div>
 
@@ -14,36 +14,28 @@
             <thead>
                 <tr>
                     <th>Bild</th>
-                    <th>Artikelbezeichnung</th>
                     <th>Beschreibungsfeld</th>
+                    <th>Artikelnummer</th>
+                    <th>EAN</th>
+                    <th>Hersteller</th>
+                    <th>Verfügbarkeit</th>
+                    <th>Versandkosten</th>
+                    <th>Stattpreis</th>
+                    <th>Bruttopreis</th>
                 </tr>
             </thead>
             <tbody>
-                
-                    <td><img src={{item.bildLink}}></td>
-                    <td>{{item.artikelbezeichnung}}</td>
-                    <td>{{item.beschreibungsfeld}}</td>
-             
+                <td><img src={{item.bildLink}}></td>
+                <td>{{item.beschreibungsfeld}}</td>
+                <td>{{item.artikelnummer}}</td>
+                <td>{{item.ean}}</td>
+                <td>{{item.hersteller}}</td>
+                <td>{{item.verfuegbarkeit}}</td>
+                <td>{{item.versandkosten}}</td>
+                <td *ngFor="let price of item.prices">{{price.bruttopreis}}</td>
+                <td *ngFor="let price of item.prices">{{price.stattpreis}}</td>
             </tbody>
         </table>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
-        <br><br>
     </body>
-    
+
 </html>
