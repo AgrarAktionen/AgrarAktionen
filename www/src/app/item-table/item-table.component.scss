@@ -30,28 +30,18 @@
     height: 10%
   }
 
-  #title {
-    height: 70px;
-    position:sticky;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.37);
-  }
-  #title h1
-  {
-      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-      text-align:end;
-
-      color: #ffffff;
-  }
   #start {
     text-align: center;
     height: 600px;
+    background-color: rgb(167, 167, 167);
   }
   #start h1 {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 
     color: green;
     text-align: center;
+    font-size: 100px;
+
   }
   #filter {
     position: static;
