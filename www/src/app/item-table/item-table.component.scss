@@ -23,6 +23,10 @@
     background-color: #4CAF50;
     color: white;
   }
+select {
+  font-size: 15px;
+}
+
   .logo {
     display: block;
     margin-left: auto;
@@ -48,4 +52,5 @@
   }
   #searchFeld {
     font-size: 30px;
+    border-radius: 10px;
   }

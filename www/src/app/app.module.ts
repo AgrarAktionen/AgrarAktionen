@@ -7,20 +7,31 @@ import { AppComponent } from './app.component';
 import { ItemTableComponent } from './item-table/item-table.component';
 import { ItemDetailComponent } from './item-detailTable/item-detail/item-detail.component';
 import { HeaderComponent } from './header/header.component';
+import { UserComponent } from './user-table/user/user.component';
+import { UserDetailComponent } from './userDetail/user-detail/user-detail.component';
+import { UserBearbeitenComponent } from './userBearbeiten/user-bearbeiten/user-bearbeiten.component';
+import { UserHinzufuegenComponent } from './userHinzufuegen/user-hinzufuegen/user-hinzufuegen.component';
+
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
     AppComponent,
     ItemTableComponent,
     ItemDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    UserComponent,
+    UserDetailComponent,
+    UserBearbeitenComponent,
+    UserHinzufuegenComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -8,25 +8,35 @@
             <br><br>
             <h1>Agrar Aktionen</h1>
             <br><br>
-            <input type="text" placeholder="Suchbegriff" id="searchFeld"/>
+            <input #begriff type="text" placeholder="Suchbegriff" id="searchFeld" (keyup)="suchen(begriff.value)"/>
         </div>
         <br><br>
+        <select #anzahl (change)="seitenanzahl(anzahl.value)">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+        </select>
         <table id="items" >
             <thead>
                 <tr>
                     <th>Bild</th>
                     <th>Artikelbezeichnung</th>
-                    <th>Beschreibungsfeld</th>
+                    <th>Preis</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of items" (click)="clicked(item)">
+                <tr *ngFor="let item of itemsAnzeige | paginate: { itemsPerPage: seitenzahl, currentPage: p }" id="items" (click)="clicked(item)">
                     <td><img src={{item.bildLink}}></td>
                     <td>{{item.artikelbezeichnung}}</td>
-                    <td>{{item.beschreibungsfeld}}</td>
+                    <td *ngFor="let price of item.prices">{{price.stattpreis}}</td>
                 </tr>
             </tbody>
         </table>
+        <table id="items">
+            <tbody>
+                <tr style="text-align: center;"><pagination-controls (pageChange)="p = $event"></pagination-controls></tr>
+            </tbody>
+        </table>       
     </body>
-    
+   
 </html>
