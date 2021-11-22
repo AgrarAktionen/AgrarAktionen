@@ -25,7 +25,13 @@ export class ItemTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.itemService.getAll().subscribe(items => this.items = items)
-    this.itemService.getAll().subscribe(itemsAnzeige => this.itemsAnzeige = itemsAnzeige)
+    this.itemService.getAll().subscribe(itemsAnzeige => {
+      this.itemsAnzeige = itemsAnzeige
+      itemsAnzeige.forEach(element => {
+        element.beschreibungsfeld = element.beschreibungsfeld.substring(0, 80);
+        element.beschreibungsfeld += "..."
+      });
+    })
   }
 
   seitenanzahl(anzahl: number) {

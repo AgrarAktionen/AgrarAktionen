@@ -4,37 +4,51 @@
     </head>
     <body>
         <div id="start">
-            <br><br>
-            <br><br>
-            <h1>Agrar Aktionen</h1>
-            <br><br>
             <input #begriff type="text" placeholder="Suchbegriff" id="searchFeld" (keyup)="suchen(begriff.value)"/>
         </div>
         <br><br>
-        <select #anzahl (change)="seitenanzahl(anzahl.value)">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-        </select>
+       
         <table id="items" >
-            <thead>
-                <tr>
-                    <th>Bild</th>
-                    <th>Artikelbezeichnung</th>
-                    <th>Preis</th>
-                </tr>
-            </thead>
             <tbody>
                 <tr *ngFor="let item of itemsAnzeige | paginate: { itemsPerPage: seitenzahl, currentPage: p }" id="items" (click)="clicked(item)">
-                    <td><img src={{item.bildLink}}></td>
-                    <td>{{item.artikelbezeichnung}}</td>
-                    <td *ngFor="let price of item.prices">{{price.stattpreis}}</td>
+                    <td style="width: 200px;"><img src={{item.bildLink}}></td>
+                    <td style="width: 430px;">
+                        <table style="border-color: white;">
+                            <tbody>
+                                <tr>
+                                    <th>{{item.artikelbezeichnung}}</th>
+                                </tr>
+                                <tr>
+                                    <td id="beschreibung" >{{item.beschreibungsfeld}}</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td id="startPreis" *ngFor="let price of item.prices"><b>{{price.bruttopreis}}€</b></td>
+                                </tr>
+                                <tr>
+                                    <td id="rabatt" *ngFor="let price of item.prices"><b>- {{price.percentage.toFixed(0)}}%</b>  </td>
+                                    <td id="preis" *ngFor="let price of item.prices"><b>{{price.stattpreis}}€</b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    
+                   
                 </tr>
             </tbody>
         </table>
         <table id="items">
             <tbody>
-                <tr style="text-align: center;"><pagination-controls (pageChange)="p = $event"></pagination-controls></tr>
+                <tr style="text-align: center;">
+                    <td> <pagination-controls (pageChange)="p = $event"></pagination-controls></td>
+                    <td> 
+                    <select #anzahl (change)="seitenanzahl(anzahl.value)">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                    </select>
+                </td>
+                </tr> 
             </tbody>
         </table>       
     </body>

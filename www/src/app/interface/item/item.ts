@@ -13,11 +13,13 @@ export interface Item {
     prices : Price;
     stattpreis: string;
     bruttopreis: string;
+
 }
 
 interface Price {
     stattpreis: string;
     bruttopreis: string;
+    percentage: number;
 }
 
 
