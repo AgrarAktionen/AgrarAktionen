@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Item } from '../interface/item/item';
 import { ItemService } from '../item-service/item.service';
 import { Router } from '@angular/router';
@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   templateUrl: './item-table.component.html',
   styleUrls: ['./item-table.component.scss']
 })
-
+@Injectable({
+  providedIn: 'root'
+})
 export class ItemTableComponent implements OnInit {
 
   itemsGesamt: Item [] = []
@@ -46,7 +48,18 @@ export class ItemTableComponent implements OnInit {
         }
       });
     })
-    this.itemService.getPrimeKategorie().subscribe(kategorien => this.kategorien = kategorien)
+    this.itemService.getPrimeKategorie().subscribe(kategorien => {
+      this.kategorien = kategorien
+      this.kategorieReihenfolge()
+    })
+  }
+
+  kategorieReihenfolge() {
+    this.kategorien.forEach(element => {
+      if(element == 'mehr...') {
+        
+      }
+    });
   }
 
   changepage() {
@@ -87,6 +100,7 @@ export class ItemTableComponent implements OnInit {
         })
       }
       this.textKürzen()
+      this.items = this.itemsAnzeige
     }
     this.p = 1
   }
@@ -126,6 +140,7 @@ export class ItemTableComponent implements OnInit {
         })
       }
       this.textKürzen()
+      this.items = this.itemsAnzeige
     }
     this.p = 1
   }
@@ -216,7 +231,6 @@ export class ItemTableComponent implements OnInit {
       })
       this.itemService.getThirdKategorie(this.kategoriePfad[0] + this.kategoriePfad[1]).subscribe(kategorien => {
         this.kategorien = kategorien
-        
       })
     }
     this.p = 1
@@ -244,6 +258,8 @@ export class ItemTableComponent implements OnInit {
       this.p = 1
       this.isHere = false;
     }
-   
   } 
+  pageReset() {
+    location.reload()
+  }
 }

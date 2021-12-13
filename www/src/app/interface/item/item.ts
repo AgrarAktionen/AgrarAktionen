@@ -13,6 +13,7 @@ export interface Item {
     prices : Price;
     stattpreis: number;
     bruttopreis: number;
+    apiLink: string
 
     percentage: number;
 }
