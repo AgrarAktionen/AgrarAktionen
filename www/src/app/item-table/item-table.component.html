@@ -6,9 +6,9 @@
         <div>
             <div id="left">
                 <table id="kategorie" style="padding: 20px;">
-                    <h2>Kategorien</h2>
+                    <h1>Kategorien</h1>
                     <tbody>
-                        <tr *ngFor="let kategorie of kategorien">
+                        <tr *ngFor="let kategorie of kategorien" style="font-size: 20px;"> 
                             <td (click)="clickKategorie(kategorie)">{{kategorie}}</td>
                         </tr>
                         <tr>
@@ -24,6 +24,17 @@
             </div>
             <br><br>
             
+            <table id="kategoriePfad">
+                <tbody>
+                    <tr>
+                        <td *ngIf="kategoriePfad[0] != ''">{{kategoriePfad[0]}} / </td>
+                        <td *ngIf="kategoriePfad[1] != ''">{{kategoriePfad[1]}} / </td>
+                        <td *ngIf="kategoriePfad[2] != ''">{{kategoriePfad[2]}} / </td>
+                        <td *ngIf="kategoriePfad[3] != ''">{{kategoriePfad[3]}} / </td>
+                    </tr>
+                </tbody>
+            </table>
+
             <table id="items">
                 <tbody>
                     <tr>
